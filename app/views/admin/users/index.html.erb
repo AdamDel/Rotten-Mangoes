@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+ <li> <%= user.firstname%> </li>
+ Admin Status: <%=user.admin %>
+<%= form_for [:admin, user], method: "delete", data: { confirm: "You sure?"} do |f| %>
+    <button type="submit"> Delete User</button>
+  <% end %>
+<%end%> 
+<%= paginate @users %>

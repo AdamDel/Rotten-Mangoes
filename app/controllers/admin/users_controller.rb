@@ -23,6 +23,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    UserMailer.goodbye_email(@user).deliver
     @user.destroy
     nil_session
     flash[:success] = "User deleted"
